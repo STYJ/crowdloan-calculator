@@ -62,7 +62,7 @@
 	</div>
 	<div>
 		<label for="estimatedReturns">Estimated returns:</label>
-		<span id="estimatedReturns">{+(ploTokenAllocation / ksmCollected * price * 100/ksmPrice).toFixed(2)}%</span>
+		<span id="estimatedReturns" style="font-size: larger; font-weight: 700; color: #ff3e00;">{+(ploTokenAllocation / ksmCollected * price * 100/ksmPrice).toFixed(2)}%</span>
 	</div>
 	<span class="sub" style="">Formula = rate * token price * 100 / ksm price. The rate used assumes no bonuses.</span>
 	<h3>4. Decide if crowdloan returns + X months lock is better than staking KSM for 12% returns + 1 week lock</h3>

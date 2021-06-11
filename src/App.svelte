@@ -18,7 +18,7 @@
 <main>
 	<h1>Crowdloan Calculator <span class="sub">Made by <a href="https://twitter.com/itsmeSTYJ">Simon</a></span></h1>
 	
-	<p>Estimate your returns from participating in the Polkadot / Kusama parachain auction!</p>
+	<p>Estimate your returns from participating in the Kusama parachain auction!</p>
 
 	<h3>0. Input token details</h3>
 	<div>

@@ -1,12 +1,11 @@
 
 <script>
-	import RangeSlider from "svelte-range-slider-pips";
 	let ticker = "SDN";
 	let ploTokenAllocation = 15400000;
 	let ksmCollected = 500000;
-	let prices = [5];
+	let price = 5;
 	let totalSupply = 70000000;
-	let ksmPrice = 500;
+	let ksmPrice = 450;
 
 	var formatter = new Intl.NumberFormat('en-US', {
   		style: 'currency',
@@ -33,41 +32,39 @@
 	<h3>1. Input crowdloan variables</h3>
 	
 	<div>
-		<label for="ploTokenAllocation"># tokens allocated for PLO:</label>
+		<label for="ploTokenAllocation">Total {ticker} offered for crowdloan:</label>
   		<input type="text" id="ploTokenAllocation" bind:value={ploTokenAllocation}>
 	</div>
 	<div>
-		<label for="ksmCollected"># KSM collected so far:</label>
+		<label for="ksmCollected">Total KSM contributed:</label>
   		<input type="text" id="ksmCollected" bind:value={ksmCollected}>
 	</div>
 	<div>
 		<label for="rate">Current {ticker}/KSM rate:</label>
 		<span id="rate">{+(ploTokenAllocation / ksmCollected).toFixed(2)}</span>
 	</div>
-	<span class="sub">The calculation above assumes no bonuses.</span>
 
 	<h3>2. Input estimated price of {ticker}</h3>
 	<div>
 		<label for="price">Price:</label>
 		<div style="display: inline-block; width: 200px;">
-			<RangeSlider float=true max="500" bind:values={prices} prefix="$"/>
-			<input type="text" id="price" max=500 bind:value={prices[0]}>		
+			<input type="text" id="price" bind:value={price}>		
 		</div>
 	</div>
 	<div>
 		<label for="marketCap">Estimated market cap:</label>
-		<span id="marketCap"> {formatter.format(prices[0] * totalSupply)}</span>
+		<span id="marketCap"> {formatter.format(price * totalSupply)}</span>
 	</div>
-	<h3>3. Input current price of KSM and calculate returns</h3>
+	<h3>3. Input current price of KSM to estimate returns</h3>
 	<div>
 		<label for="ksmPrice">Current KSM price:</label>
   		<input type="text" id="ksmPrice" bind:value={ksmPrice}>
 	</div>
 	<div>
 		<label for="estimatedReturns">Estimated returns:</label>
-		<span id="estimatedReturns">{+(ploTokenAllocation / ksmCollected * prices[0] * 100/ksmPrice).toFixed(2)}%</span>
+		<span id="estimatedReturns">{+(ploTokenAllocation / ksmCollected * price * 100/ksmPrice).toFixed(2)}%</span>
 	</div>
-	<span class="sub">Formula = rate * token price * 100 / ksm price</span>
+	<span class="sub" style="">Formula = rate * token price * 100 / ksm price. The rate used assumes no bonuses.</span>
 	<h3>4. Decide if crowdloan returns + X months lock is better than staking KSM for 12% returns + 1 week lock</h3>
 </main>
 
